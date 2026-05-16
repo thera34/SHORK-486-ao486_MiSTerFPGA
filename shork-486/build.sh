@@ -105,7 +105,7 @@ DROPBEAR_VER="2026.90"
 FILE_VER="5_47"
 GIT_VER="2.54.0"
 HTOP_VER="3.5.0"
-KERNEL_VER="7.0.6"
+KERNEL_VER="7.0.8"
 LIBEVENT_VER="release-2.1.12-stable"
 LIBXLSXWRITER_VER="1.2.4"
 LIBXML2_VER="2.15.3"
@@ -1408,8 +1408,7 @@ compile_kernel()
     sudo sed -i "s/printf '%s' -dirty/printf '%s'/" scripts/setlocalversion
 
     # Apply our patches
-    echo -e "${GREEN}Applying 7.0.x_6.14.11-e820-v2 patch...${RESET}"
-    patch -p1 < "$CURR_DIR/patches/7.0.x_6.14.11-e820-v2.patch"
+    # NOT PRESENTLY NEEDED
 
     echo -e "${GREEN}Compiling Linux kernel...${RESET}"
     make ARCH=x86 olddefconfig
@@ -5082,9 +5081,9 @@ get_installed_programs_features()
 
     # Misc features
     if [ -d "$DESTDIR/usr/share/consolefonts" ]; then
-        INCLUDED_FEATURES+="\n * alternative console fonts"
+        INCLUDED_FEATURES+="\n * console fonts pack"
     else
-        EXCLUDED_FEATURES+="\n * alternative console fonts"
+        EXCLUDED_FEATURES+="\n * console fonts pack"
     fi
 
     if [ -d "$DESTDIR/usr/share/keymaps" ]; then
